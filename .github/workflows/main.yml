@@ -20,7 +20,7 @@ jobs:
           python-version: "3.11"
 
       - name: Install dependencies
-        run: pip install -r requirements.txt || echo "No requirements file yet"
+        run: pip install -r requirements.txt || echo "No requirements yet"
 
       - name: Run tests
         run: echo "No tests yet"
