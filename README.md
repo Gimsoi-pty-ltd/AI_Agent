@@ -14,5 +14,9 @@ A structured execution intelligence layer that analyzes project, task, and contr
 - `dev` → development
 - `feature/*` → features
 - `hotfix/*` → urgent fixes
+
+trigger final check
+
 CI Pipeline
 trigger again
+
