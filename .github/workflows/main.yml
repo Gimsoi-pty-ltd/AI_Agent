@@ -2,16 +2,21 @@ name: Backend CI Check
 
 on:
   push:
-    branches: ["main", "dev"]
+    branches: [ main, dev ]
   pull_request:
-    branches: ["main"]
+    branches: [ main, dev ]
 
 jobs:
   ci-build:
     runs-on: ubuntu-latest
 
+    defaults:
+      run:
+        working-directory: backend
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -20,10 +25,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd backend
-          pip install -r requirements.txt
+          pip install fastapi uvicorn
 
-      - name: Run server check
+      - name: Run backend check
         run: |
-          cd backend
           python -c "from app.main import app"
