@@ -10,13 +10,12 @@ jobs:
   ci-build:
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        working-directory: backend
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
+      - name: Debug repo structure
+        run: ls -R
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -25,8 +24,10 @@ jobs:
 
       - name: Install dependencies
         run: |
+          cd backend
           pip install fastapi uvicorn
 
       - name: Run backend check
         run: |
+          cd backend
           python -c "from app.main import app"
